@@ -83,6 +83,7 @@ public class BinaryTreeView extends FormLayout implements View {
 		for(String node : strNodes){
 			btree.insert(Integer.parseInt(node));
 		}
+		result.setValue("Tree Built");
 		
 	}
 	
