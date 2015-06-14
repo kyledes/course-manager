@@ -23,14 +23,14 @@ public class CourseForm extends FormLayout implements ClickListener{
 	
 	private Button save = new Button("Save", this);
 	private Button cancel = new Button("Cancel", this);
-	TextField courseName = new TextField("Name");
-	TextField location = new TextField("Location");
-	TextField credit = new TextField("Credit");
+	private TextField courseName = new TextField("Name");
+	private TextField location = new TextField("Location");
+	private TextField credit = new TextField("Credit");
 	
-	Course course;
-	CourseView courseView;
+	private Course course;
+	private CourseView courseView;
 	
-	BeanFieldGroup<Course> formFieldBindings;
+	private BeanFieldGroup<Course> formFieldBindings;
 	
 	public CourseForm(CourseView courseView){
 		this.courseView = courseView;

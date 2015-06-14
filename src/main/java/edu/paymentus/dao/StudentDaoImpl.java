@@ -57,7 +57,6 @@ public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements Stu
 			
 				
 		});
-		//System.out.println("*PK*"+pk);
 		return pk.get(0);
 	}
 
@@ -71,31 +70,31 @@ public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements Stu
 
 	@Override
 	public String getFindByIdSql() {
-		return this.FINDBYID;
+		return FINDBYID;
 	}
 
 
 	@Override
 	public String getFindAllSql() {
-		return this.FINDALL;
+		return FINDALL;
 	}
 
 
 	@Override
 	public String getInsertSql() {
-		return this.INSERT;
+		return INSERT;
 	}
 
 
 	@Override
 	public String getUpdateSql() {
-		return this.UPDATE;
+		return UPDATE;
 	}
 
 
 	@Override
 	public String getDeleteSql() {
-		return this.DELETE;
+		return DELETE;
 	}
 
 }

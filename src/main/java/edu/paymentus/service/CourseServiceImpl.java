@@ -62,8 +62,8 @@ public class CourseServiceImpl implements CourseService {
 	}	
 	
 	@Override
-	public List<Course> findAllCoursesNotEnrolled(Student student){
-		return courseDao.findAllCoursesNotEnrolled(student);
+	public List<Course> findAllCoursesNotEnrolled(Student student, String text){
+		return courseDao.findAllCoursesNotEnrolled(student, text);
 	}
 
 	@Override

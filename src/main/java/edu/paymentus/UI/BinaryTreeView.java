@@ -71,18 +71,9 @@ public class BinaryTreeView extends FormLayout implements View {
 	}
 	
 
-
 	private void buildLayout() {
-	//	HorizontalLayout build = new HorizontalLayout(tree, buildTree);
-	//	HorizontalLayout searchTree = new HorizontalLayout(searchNumber, search);
-//		build.setSizeFull();
-//		searchTree.setSizeFull();
-		
-	//	FormLayout mainLayout = new FormLayout(build,searchTree, result);
+
 		addComponents(tree, buildTree,searchNumber, search, result);
-	//	addComponent(build);
-	//	addComponent(searchTree);
-	//	addComponent(result);
 		
 	}
 	

@@ -36,13 +36,13 @@ public class StudentView extends VerticalLayout implements View {//, ViewChangeL
 	@Autowired
 	private StudentService studentService;
 	
-	Student selectedStudent;
+	private Student selectedStudent;
 	
-	Grid studentList = new Grid();
-	Button newStudent = new Button("New Student");
-	Button deleteStudent = new Button("Delete Student");
+	private Grid studentList = new Grid();
+	private Button newStudent = new Button("New Student");
+	private Button deleteStudent = new Button("Delete Student");
 
-	StudentForm studentForm = new StudentForm(this);
+	private StudentForm studentForm = new StudentForm(this);
 
 	@PostConstruct
 	void init() {
@@ -82,8 +82,6 @@ public class StudentView extends VerticalLayout implements View {//, ViewChangeL
 				studentForm.edit(selectedStudent);
 			}
 		});
-		
-	//	eventRouter.addListener(ViewChangeEvent.class, this, "processViewChange");
 	
 		refreshStudents();
 		buildLayout();
@@ -92,8 +90,6 @@ public class StudentView extends VerticalLayout implements View {//, ViewChangeL
 	private void buildLayout() {
 		HorizontalLayout label = new HorizontalLayout(new Label("Students"));
 		label.setWidth("100%");
-		// filter.setWidth("100%");
-		// actions.setExpandRatio(filter, 1);
 		HorizontalLayout actions = new HorizontalLayout(newStudent, deleteStudent);
 		VerticalLayout left = new VerticalLayout(label, studentList, actions);
 		left.setSizeFull();
@@ -110,15 +106,16 @@ public class StudentView extends VerticalLayout implements View {//, ViewChangeL
 				Student.class, studentService.findAll()));
 
 	}
-	
-	private void processViewChange(ViewChangeEvent event){
-		System.out.println("event: " + event.getOldView());
-		
-	}
 
 	@Override
-	public void enter(ViewChangeEvent event) {
-		// the view is constructed in the init() method()
+	public void enter(ViewChangeEvent event) {}
+
+	public Grid getStudentList() {
+		return this.studentList;
+	}
+
+	public Student getSelectedStudent() {
+		return this.selectedStudent;
 	}
 
 }

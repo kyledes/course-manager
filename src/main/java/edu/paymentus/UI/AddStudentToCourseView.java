@@ -159,18 +159,7 @@ public class AddStudentToCourseView extends VerticalLayout implements View, Clic
 		row3.setSizeFull();
 		row3.setSpacing(true);
 		addComponent(main);
-	/*	VerticalLayout left = new VerticalLayout(search, courseList, add);
-		add.setEnabled(false);
-		left.setSizeFull();
-		//VerticalLayout center = new VerticalLayout(add,remove);
-		
-		VerticalLayout right = new VerticalLayout(stu, enrolledList, remove);
-		right.setSizeFull();
-		
-		HorizontalLayout main = new HorizontalLayout(left, right);
-		main.setSizeFull();
-		VerticalLayout stuname = new VerticalLayout(main);
-		addComponent(stuname);*/
+
 		
 	}
 
@@ -188,7 +177,7 @@ public class AddStudentToCourseView extends VerticalLayout implements View, Clic
 	}
 
 	private void refreshCourses(String text) {
-		availableCourses = courseService.findAllCoursesNotEnrolled(student);
+		availableCourses = courseService.findAllCoursesNotEnrolled(student, text);
 		enrolledCourses = courseService.getCoursesForStudent(student);
 		courseList.setContainerDataSource(new BeanItemContainer<Course>(Course.class, availableCourses));
 		enrolledList.setContainerDataSource(new BeanItemContainer<Course>(Course.class, enrolledCourses));

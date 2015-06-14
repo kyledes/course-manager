@@ -23,18 +23,18 @@ public class StudentForm extends FormLayout implements ClickListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1483780566604213373L;
-	Button save = new Button("Save", this);
-	Button cancel = new Button("Cancel", this);
-	TextField firstName = new TextField("First name");
-	TextField lastName = new TextField("Last name");
-	TextField email = new TextField("Email");
-	Button addCourse = new Button("View/Add Course", this);
+	private Button save = new Button("Save", this);
+	private Button cancel = new Button("Cancel", this);
+	private TextField firstName = new TextField("First name");
+	private TextField lastName = new TextField("Last name");
+	private TextField email = new TextField("Email");
+	private Button addCourse = new Button("View/Add Course", this);
 
 	
-	Student student;
-	StudentView studentView;
+	private Student student;
+	private StudentView studentView;
 
-	BeanFieldGroup<Student> formFieldBindings;
+	private BeanFieldGroup<Student> formFieldBindings;
 
 	public StudentForm(StudentView studentView) {
 		this.studentView = studentView;
@@ -100,11 +100,11 @@ public class StudentForm extends FormLayout implements ClickListener {
 		} else if (event.getButton() == cancel) {
 			// Place to call business logic.
 			Notification.show("Cancelled", Type.TRAY_NOTIFICATION);
-			this.studentView.studentList.select(null);
+			this.studentView.getStudentList().select(null);
 			
 		} else if (event.getButton() == addCourse){
 //			System.out.println("in add course");
-			Student selectedStudent = studentView.selectedStudent;
+			Student selectedStudent = studentView.getSelectedStudent();
 			if(selectedStudent == null || selectedStudent.getId() == 0){
 				Notification.show("Please Select A Student", Type.TRAY_NOTIFICATION);
 			}else{

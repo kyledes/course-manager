@@ -3,18 +3,11 @@ package edu.paymentus.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 
 public abstract class GenericDaoImpl<T, Id extends Serializable> implements GenericDao<T, Id > {
 	
-	private String findById;
-	private String findAll;
-	private String update;
-	private String insert;
-	private String delete;
 	private RowMapper<T> rowMapper;
 	private JdbcTemplate jdbcTemplate;
 	private Class<T> clazz;

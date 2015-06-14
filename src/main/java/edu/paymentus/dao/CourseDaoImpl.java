@@ -23,9 +23,12 @@ public class CourseDaoImpl extends GenericDaoImpl<Course, Long> implements Cours
 	private static final String UPDATE = "update course set courseName = ?, location = ?, credit = ? where course_id = ?";
 	private static final String DELETE = "delete from course where course_id = ?";
 	private static final String LIKE = "select course_id, courseName, location, credit from course where courseName like ?";
-	private static final String FINDALLBYSTUDENT ="select course.course_id, courseName, location, credit from course inner join studentcourses on course.course_id = studentcourses.course_id  where studentcourses.student_id = ?";
+	private static final String FINDALLBYSTUDENT ="select course.course_id, courseName, location, credit from course "
+			                                    + " inner join studentcourses on course.course_id = studentcourses.course_id  "
+			                                    + "where studentcourses.student_id = ? ";
 	private static final String ENROLLSTUDENT ="insert into studentcourses (course_id, student_id) values (?, ?)";
 	private static final String FINDALLNOTENROLLED = "select course.course_id, courseName, location, credit from course where course_id not in( select course_id from studentcourses where student_id = ?)";
+	private static final String FINDALLNOTENROLLEDLIKE = "select course.course_id, courseName, location, credit from course where course.courseName like ? and course_id not in ( select course_id from studentcourses where student_id = ?)";
 	private static final String DROPCOURSE = "delete from studentcourses where course_id = ? and student_id = ?";
 	
 	private static RowMapper<Course> rowMapper =  new RowMapper<Course>(){
@@ -48,9 +51,7 @@ public class CourseDaoImpl extends GenericDaoImpl<Course, Long> implements Cours
 	}
 	@Override
 	public List<Course> search(String text) {
-		//clean text
 		text = "%" + text + "%";
-		System.out.println("text: " + text);
 		return jdbcTemplate.query(LIKE, rowMapper, new Object[]{ text});
 	}
 	
@@ -87,30 +88,41 @@ public class CourseDaoImpl extends GenericDaoImpl<Course, Long> implements Cours
 	}
 
 	@Override
-	public List<Course> findAllCoursesNotEnrolled(Student student){
-		Object[] params = {student.getId()};
-		return jdbcTemplate.query(FINDALLNOTENROLLED,  rowMapper, params);
+	public List<Course> findAllCoursesNotEnrolled(Student student, String text){
+		
+		String sql;
+		Object[] params;
+		
+		if(text == null || text.equalsIgnoreCase("")){
+			sql = FINDALLNOTENROLLED;
+			params = new Object[] {student.getId()};
+		}else{
+			text = "%" + text + "%";
+			sql = FINDALLNOTENROLLEDLIKE;
+			params = new Object[]{text, student.getId()};	
+		}
+		
+		return jdbcTemplate.query(sql,  rowMapper, params);
 	}
 	@Override
 	public String getFindByIdSql() {
-		return this.FINDBYID;
+		return FINDBYID;
 	}
 	@Override
 	public String getFindAllSql() {
-		return this.FINDALL;
+		return FINDALL;
 	}
 	@Override
 	public String getInsertSql() {
-		return this.INSERT;
+		return INSERT;
 	}
 	@Override
 	public String getUpdateSql() {
-		return this.UPDATE;
+		return UPDATE;
 	}
 	@Override
 	public String getDeleteSql() {
-		return this.DELETE;
+		return DELETE;
 	}
-
 
 }

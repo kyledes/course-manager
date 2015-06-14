@@ -17,6 +17,6 @@ public interface CourseDao extends GenericDao<Course, Long> {
 
 	void dropCourseForStudent(Course course, Student student);
 
-	List<Course> findAllCoursesNotEnrolled(Student student);
+	List<Course> findAllCoursesNotEnrolled(Student student, String text);
 
 }

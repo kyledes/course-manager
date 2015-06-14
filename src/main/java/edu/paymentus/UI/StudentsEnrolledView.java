@@ -38,9 +38,9 @@ public class StudentsEnrolledView extends VerticalLayout implements View {
 	@Autowired
 	private StudentService studentService;
 
-	Grid studentList = new Grid();
-	Student selectedStudent;
-	Course course;
+	private Grid studentList = new Grid();
+	private Student selectedStudent;
+	private Course course;
 
 	private Label courseListed = new Label();
 
@@ -75,15 +75,7 @@ public class StudentsEnrolledView extends VerticalLayout implements View {
 		left.setSizeFull();
 		studentList.setSizeFull();
 		left.setExpandRatio(studentList, 1);
-/*		HorizontalLayout courseLayout = new HorizontalLayout(left, courseForm);
-		courseLayout.setSizeFull();
-		courseLayout.setExpandRatio(left, 1);
-		HorizontalLayout actions = new HorizontalLayout( newCourse, deleteCourse);
-		
-		VerticalLayout mainLayout = new VerticalLayout(courseLayout, actions);
-		
-		mainLayout.setSizeFull();*/
-		
+
 		addComponent(left);
 
 	}
