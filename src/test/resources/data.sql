@@ -19,15 +19,12 @@ insert into student (student_id, firstName, lastName, email) VALUES (18, 'Sam', 
 insert into student (student_id, firstName, lastName, email) VALUES (19, 'Jon', 'Woodcock', 'jwoodcock@vt.edu'); 
 
 insert into course (course_id, courseName, location, credit) VALUES (1,'Applied Agriculture Mathematics', 'AG 103',3);
-insert into course (course_id, courseName, location, credit) VALUES (2,'Agricultural Machinery & Mechanics', 'AG 201',3);
+insert into course (course_id, courseName, location, credit) VALUES (2,'Agricultural Machinery and Mechanics', 'AG 201',3);
 insert into course (course_id, courseName, location, credit) VALUES (3,'Communication Skills', 'AG 135',3);
 insert into course (course_id, courseName, location, credit) VALUES (4,'Introduction To Animal Science', 'BARN 25',3);
 insert into course (course_id, courseName, location, credit) VALUES (5,'Fundamentals Of Turfgrass Management', 'AG 221',3);
-insert into course (course_id, courseName, location, credit) VALUES (2,'Introduction To Plant Biology And Chemistry', 'AG102',3);
-insert into course (course_id, courseName, location, credit) VALUES (2,'Personnel Management', 'AG 215',3);
-insert into course (course_id, courseName, location, credit) VALUES (2,'Animal Structures And Environments', 'AG 111',3);
-insert into course (course_id, courseName, location, credit) VALUES (2,'Livestock Merchandising', 'AG 121',3);
+insert into course (course_id, courseName, location, credit) VALUES (6,'Introduction To Plant Biology And Chemistry', 'AG102',3);
+insert into course (course_id, courseName, location, credit) VALUES (7,'Personnel Management', 'AG 215',3);
+insert into course (course_id, courseName, location, credit) VALUES (8,'Animal Structures And Environments', 'AG 111',3);
+insert into course (course_id, courseName, location, credit) VALUES (9,'Livestock Merchandising', 'AG 121',3);
 
-
---create table PUBLIC.adress(ID INT, street Varchar2, city varchar2, state varchar2, zipcode varchar2);
---create table Public.course(ID INT, courseName Varchar2, location Varchar2, description Varchar2);
